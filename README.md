@@ -26,7 +26,7 @@ We also wish to see what words appear the most in our training set, so we create
 ![image](https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png)
 
 
-![image](https://user-images.githubusercontent.com/27839519/162640349-d61a5e75-f7e1-4dde-81b7-6d101102ea6b.png)
+![image](https://user-images.githubusercontent.com/27839519/162640519-6f3ddbb7-16fb-435a-bab1-d0e88a5ecbd2.png)
 
 Lastly, we wish to see how often the top 30 words show up in each category:
 
