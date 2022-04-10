@@ -24,8 +24,6 @@ There may also exist a problem since the word count in each category differs sig
 We also wish to see what words appear the most in our training set, so we create a word cloud and plot a histogram of the value counts:
 
 ![image](https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png)
-
-
 ![image](https://user-images.githubusercontent.com/27839519/162640519-6f3ddbb7-16fb-435a-bab1-d0e88a5ecbd2.png)
 
 Lastly, we wish to see how often the top 30 words show up in each category:
