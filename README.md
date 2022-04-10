@@ -1,3 +1,4 @@
+
 # DataHacks2022
 
 ## Introduction
@@ -12,24 +13,24 @@ Before some related visualizations and modeling start, given that the pieces of 
 
 The first thing we notice is a difference between the numbers of three categories, which may cause a problem in our classification. So we plot a histogram:
 
-<p align="center">![image](https://user-images.githubusercontent.com/27839519/162640346-9ff79ee0-7028-485d-9410-bc85305514b1.png)</p>
+![image](https://user-images.githubusercontent.com/27839519/162640346-9ff79ee0-7028-485d-9410-bc85305514b1.png)
 
 
 There may also exist a problem since the word count in each category differs significantly:
 
-<p align="center">![image](https://user-images.githubusercontent.com/27839519/162640338-efcf2912-e60e-438c-84e3-f6b28d5c480a.png)</p>
+![image](https://user-images.githubusercontent.com/27839519/162640338-efcf2912-e60e-438c-84e3-f6b28d5c480a.png)
 
 
 We also wish to see what words appear the most in our training set, so we create a word cloud and plot a histogram of the value counts:
 
-<p align="center">![image](https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png)</p>
+![image](https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png)
 
 
-<p align="center">![image](https://user-images.githubusercontent.com/27839519/162640349-d61a5e75-f7e1-4dde-81b7-6d101102ea6b.png)</p>
+![image](https://user-images.githubusercontent.com/27839519/162640349-d61a5e75-f7e1-4dde-81b7-6d101102ea6b.png)
 
 Lastly, we wish to see how often the top 30 words show up in each category:
 
-<p align="center">![image](https://user-images.githubusercontent.com/27839519/162640321-db4d7940-6359-4a6a-b0f2-fc3fd44df7f6.png)</p>
+![image](https://user-images.githubusercontent.com/27839519/162640321-db4d7940-6359-4a6a-b0f2-fc3fd44df7f6.png)
 
 
 ## Feature Engineering
@@ -48,4 +49,4 @@ This is a general analysis for each step of our current progress that relates ea
 
 ## Conclusion & Future Development
 
-Generally speaking, after many attempts on logistics regression, Naive Bayesian model, CNN and RNN-LSTM, we could reach an optimal validation accuracy of about 75%, which could hopefully perform well on the testing data. From the perspective of feature engineering, most of the processing techniques in our project are those involved in the college courses, including n-grams, bag-of-words and word2vectors. For future development about this, we might do some research for better techniques that promote the performance of models. Also, from the perspective of modeling, we noticed that there exists some overfitting cases for the model. We cannot address all of them given the limited time; but this could be further developed to ensure the performance on some unseen data. A team member’s current research interest, domain adaptation, might be a good way out.
+Generally speaking, after many attempts on logistics regression, Naive Bayesian model, CNN and RNN-LSTM, we could reach an optimal validation accuracy of about 
