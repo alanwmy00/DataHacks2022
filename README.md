@@ -21,22 +21,21 @@ Before some related visualizations and modeling start, given that the pieces of 
 
 ## Exploratory Data Analysis
 
-The first thing we notice is a difference between the numbers of three categories, which may cause a problem in our classification. So we plot a histogram:
+The first thing we notice is a difference between the numbers of three categories, which may cause a problem in our classification. So we plot a histogram to see. As noticed from this visualization, there exists some unbalance based on the count for each label, that neutral takes the largest number of counts, and positive follows by nearly halving of the neutral ones, and negative comments as labels actually take the lowest count. This is a signal for us to rationally decide if our final prediction is intuitively reasonable to submit. Also, when building our models, related regularization or adjustments could be applied to make the model more robust.
 
 ![image](https://user-images.githubusercontent.com/27839519/162640346-9ff79ee0-7028-485d-9410-bc85305514b1.png)
 
-
-There may also exist a problem since the word count in each category differs significantly:
+On the other hand, there may also exist a problem since the top-word count in each category differs significantly.
 
 ![image](https://user-images.githubusercontent.com/27839519/162640338-efcf2912-e60e-438c-84e3-f6b28d5c480a.png)
 
 
-We also wish to see what words appear the most in our training set, so we create a word cloud and plot a histogram of the value counts:
+We also wish to see what words appear the most in our training set, so we create a word cloud and plot a histogram of the value counts. They basically express the same idea, but in two different methodologies and help us draw different observations from that. Note that this is also helpful for us to check if our data is actually “clean”. First, by looking at the word cloud, we reasonably noticed the appearance of some keywords in finance such as company, profit, service and sale. But also notice there are some dominant words that seem strange to our “stereotype” to finance, including finnish and finland. This is quite interesting because this probably indicates that most of the comment focuses on the market in a special area, another hot-word EUR also validates our guesses. From the perspective of modeling, most of the words do not have a clear indication of sentiments, which might be something that needs to be specially addressed in later stages. 
 
 ![image](https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png)
 ![image](https://user-images.githubusercontent.com/27839519/162640519-6f3ddbb7-16fb-435a-bab1-d0e88a5ecbd2.png)
 
-Lastly, we wish to see how often the top 30 words show up in each category:
+Lastly, we wish to see how often the top 30 words show up in each category.  In the visualization below, based on the “most popular 30 words” we created, we would like to see how the counts of labels are distributed among the top-words rather than all words. Hence, noticeably, the negative comments seem to use less popular words in the vocabulary. As neutral word counts still take the dominant proportion, we guess the reason is that neural comments usually analyze both the advantages and disadvantages of somethings, which might lead to broader use of hot words we extracted.
 
 ![image](https://user-images.githubusercontent.com/27839519/162640321-db4d7940-6359-4a6a-b0f2-fc3fd44df7f6.png)
 
@@ -66,6 +65,9 @@ As a summary of our attempts and model tuning overnight, the table above shows r
 |Logistic Regression with C = 3|0.89|/|0.6639
 |Logistic Regression with C = 10|0.92|/|0.65|
 |Naive Bayes|0.78|/|0.647|
+|CNN|0.90|1.1(CrossEntropy)|0.558|
+|Single RNN-LSTM|0.88|0.8|0.61|
+|Bidirectional RNN|0.91|0.1|0.71|
 
 ## Analysis & Discussion
 
