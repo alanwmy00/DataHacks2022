@@ -6,7 +6,9 @@ Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://
 ## Code
 
 (Cleaning & EDA)[https://github.com/alanwmy00/DataHacks2022/blob/main/Cleaning%20and%20EDA.ipynb]
+
 (Modelling 1)[https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_1.ipynb]
+
 (Modelling 2)[https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_2.ipynb]
 
 ## Introduction
