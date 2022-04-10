@@ -25,26 +25,28 @@ Before some related visualizations and modeling start, given that the pieces of 
 
 The first thing we notice is a difference between the numbers of three categories, which may cause a problem in our classification. So we plot a histogram to see. As noticed from this visualization, there exists some unbalance based on the count for each label, that neutral takes the largest number of counts, and positive follows by nearly halving of the neutral ones, and negative comments as labels actually take the lowest count. This is a signal for us to rationally decide if our final prediction is intuitively reasonable to submit. Also, when building our models, related regularization or adjustments could be applied to make the model more robust.
 
-![image](https://user-images.githubusercontent.com/27839519/162640346-9ff79ee0-7028-485d-9410-bc85305514b1.png)
+<img src="https://user-images.githubusercontent.com/27839519/162640346-9ff79ee0-7028-485d-9410-bc85305514b1.png" width="500" class="center">  
 
 On the other hand, there may also exist a problem since the top-word count in each category differs significantly.
 
-![image](https://user-images.githubusercontent.com/27839519/162640338-efcf2912-e60e-438c-84e3-f6b28d5c480a.png)
+<img src="https://user-images.githubusercontent.com/27839519/162640338-efcf2912-e60e-438c-84e3-f6b28d5c480a.png" width="500" class="center">  
 
 
 We also wish to see what words appear the most in our training set, so we create a word cloud and plot a histogram of the value counts. They basically express the same idea, but in two different methodologies and help us draw different observations from that. Note that this is also helpful for us to check if our data is actually “clean”. First, by looking at the word cloud, we reasonably noticed the appearance of some keywords in finance such as company, profit, service and sale. But also notice there are some dominant words that seem strange to our “stereotype” to finance, including finnish and finland. This is quite interesting because this probably indicates that most of the comment focuses on the market in a special area, another hot-word EUR also validates our guesses. From the perspective of modeling, most of the words do not have a clear indication of sentiments, which might be something that needs to be specially addressed in later stages. 
 
-![image](https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png)
-![image](https://user-images.githubusercontent.com/27839519/162640519-6f3ddbb7-16fb-435a-bab1-d0e88a5ecbd2.png)
+<img src="https://user-images.githubusercontent.com/27839519/162640371-b19ad632-8b7f-4ce8-9024-050590c02766.png" width="500" class="center">  
+<img src="https://user-images.githubusercontent.com/27839519/162640519-6f3ddbb7-16fb-435a-bab1-d0e88a5ecbd2.png" width="500" class="center">  
 
 Lastly, we wish to see how often the top 30 words show up in each category.  In the visualization below, based on the “most popular 30 words” we created, we would like to see how the counts of labels are distributed among the top-words rather than all words. Hence, noticeably, the negative comments seem to use less popular words in the vocabulary. As neutral word counts still take the dominant proportion, we guess the reason is that neural comments usually analyze both the advantages and disadvantages of somethings, which might lead to broader use of hot words we extracted.
 
-![image](https://user-images.githubusercontent.com/27839519/162640321-db4d7940-6359-4a6a-b0f2-fc3fd44df7f6.png)
+<img src="https://user-images.githubusercontent.com/27839519/162640321-db4d7940-6359-4a6a-b0f2-fc3fd44df7f6.png" width="500" class="center">  
 
 
 ## Feature Engineering
 
-We apply TF-IDF (Term Frequency-Inverse Document Frequency) to extract the features from the text data. This gives the overall weight of each word in the sentence, rather than the frequency of each word in the sentence simply as in the CountVectorizer. In other words, this is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. With this large dataset, we request the maximum features to be 2000. For all extracted “features” with nonzero TF-IDF, the average is around 0.3. The maximum TF-IDF for some features is 1. 
+We apply TF-IDF (Term Frequency-Inverse Document Frequency) to extract the features from the text data. This gives the overall weight of each word in the sentence, rather than the frequency of each word in the sentence simply as in the CountVectorizer. In other words, this is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. With this large dataset, we request the maximum features to be 2000. For all extracted “features” with nonzero TF-IDF, the average is around 0.3. The maximum TF-IDF for some features is 1. To be honest, given that such vectorizing and embedding processes are not robust (not self-tuned), there are many parameters that we will need to settle based on our own knowledge. Therefore, we experimented a lot to see which combo leads to the best performance.
+
+<img src="https://user-images.githubusercontent.com/27839519/162642081-abea1c30-5495-40b8-8841-f03b53ef1aed.png" width="800" class="center">  
 
 ## Modeling
 
@@ -52,12 +54,12 @@ First, we fit the model by using Logistic Regression and Naive Bayes models. For
 
 Second, from the perspective of deep learning, for this sentiment analysis problem, we tried developing two major kinds of models using Tensorflow and Keras - CNN and RNN. In our customized CNN model, after many experiments, the structure of layers is settled to be embedding - conv1D - max pooling - activation - activation. Basically this is not some-pretrained models, as all pretrained models we found for either torch and tensorflow are initially designed for computer vision. Therefore we decide to custom a CNN model that is not deep (as time is not allowed). But actually, although it gives us a good training accuracy of about 91%, the validation accuracy keeps reported to be about 60%. This is obviously kind of overfitting, but by trying to add some pooling and dropout layers, it cannot change the performance a lot. But actually, this is a very good baseline model to start with. Hence we take a look at another model - RNN. For RNN attempts, we design a simple RNN-LSTM model and a bidirectional RNN model; we first get the network running and compare their initial performances. Single RNN-LSTM gives a validation accuracy of about 58%, but the bidirectional model gives a validation performance of nearly 70%. In this way, given the limited time, we would like to tune and optimize based on the latter model. It is worth mentioning that we inputted two sets of features to the deep learning models: one of which is based on the popularity of each sentence (by the vocabulary counts) and the other one is based on a index set we established with the vocabulary. The latter one turns out to be better generally. The visualization below presents a loss plot for our CNN attempt, as we noticed below it actually does not strongly converge, which indicates a potentially neutral level design of the network.
 
-![image](https://user-images.githubusercontent.com/27839519/162641548-84f46474-f477-4690-a9a5-e0e69a6ab433.png)
+<img src="https://user-images.githubusercontent.com/27839519/162641548-84f46474-f477-4690-a9a5-e0e69a6ab433.png" width="500" class="center">  
 
 In this way, from the perspective of deep learning models, we finally decide to tune for the bidirectional RNN model, and it finally gives us a validation accuracy of 72%. The visualization below gives the loss plot and accuracy plot for the bidirectional RNN: even though tuning a lot and adding a high-proportional dropout layer, overfitting still exists to some extent, but we tried our best.
 
-![image](https://user-images.githubusercontent.com/27839519/162641553-f4338cea-2d9b-46c1-b039-1c1959a11657.png)
-![image](https://user-images.githubusercontent.com/27839519/162641560-5da6b21b-914f-4224-9db0-d9bb554806d5.png)
+<img src="https://user-images.githubusercontent.com/27839519/162641553-f4338cea-2d9b-46c1-b039-1c1959a11657.png" width="500" class="center">  
+<img src="https://user-images.githubusercontent.com/27839519/162641560-5da6b21b-914f-4224-9db0-d9bb554806d5.png" width="500" class="center">  
 
 As a summary of our attempts and model tuning overnight, the table above shows related statistics, and we decide to turn in the prediction of bidirectional RNN model
 
