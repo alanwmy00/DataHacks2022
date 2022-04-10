@@ -3,6 +3,12 @@
 
 Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://github.com/alanwmy00), [Hongyi Yang](https://github.com/hoy007), [Jack Yang](https://github.com/immmjack)
 
+## Code
+
+(Cleaning & EDA)[https://github.com/alanwmy00/DataHacks2022/blob/main/Cleaning%20and%20EDA.ipynb]
+(Modelling 1)[https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_1.ipynb]
+(Modelling 2)[https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_2.ipynb]
+
 ## Introduction
 
 Finance does not simply consist of statistics, data and monetary things, but it involves more negotiation and communication. In this way, conversations and sentiments will be a very important part that might influence the change of monetary and financial markets. In this project, given a bunch of comments as a format of texts, we would like to develop machine learning/deep learning models to predict if the sentiment included in the comments are actually positive, neutral or negative.
