@@ -33,7 +33,7 @@ Lastly, we wish to see how often the top 30 words show up in each category:
 
 ## Feature Engineering
 
-We apply TF-IDF (Term Frequency-Inverse Document Frequency) to extract the features from the text data. This gives the overall weight of each word in the sentence, rather than the frequency of each word in the sentence simply as in the CountVectorizer. In other words, this is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. 
+We apply TF-IDF (Term Frequency-Inverse Document Frequency) to extract the features from the text data. This gives the overall weight of each word in the sentence, rather than the frequency of each word in the sentence simply as in the CountVectorizer. In other words, this is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. With this large dataset, we request the maximum features to be 2000. For all extracted “features” with nonzero TF-IDF, the average is around 0.3. The maximum TF-IDF for some feature is 1. 
 
 ## Modeling
 
