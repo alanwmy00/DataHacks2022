@@ -1,9 +1,11 @@
-## EDIT 5/8/2022
-A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks and retrain our model.
+## 5/8/2022 Post-DataHacks Revisit
+A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets and retrain our model.
 
-Details can be found [here](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Reattempt.ipynb)
+Details can be found [here](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Reattempt.ipynb).
 
-In short, we trained a RNN model by stacking two LSTM layers and reached an astonishing **90%** accuracy on both validation set and test set (much higher than the 76% accuracy of the winners' team). Unfortunately, since DataHacks is already over, we are unable to get a true accuracy on the test dataset provided, but it should be around 0.9 based on validation set and test set extracted from advanced_trainset.csv.
+In short, we trained a RNN model by stacking two LSTM layers and reached an astonishing **90%** accuracy on both validation set and test set (much higher than the 76% accuracy of the winners' team). 
+
+Unfortunately, since DataHacks is already over, we are unable to get a true accuracy on the test dataset provided, but it should be around 0.9 based on validation set and test set extracted from advanced_trainset.csv.
 
 > I wish I could know this method earily :(     --- Alan Wang
 
