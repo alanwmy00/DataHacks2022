@@ -1,4 +1,4 @@
-## 5/8/2022 Post-DataHacks Revisit
+## 5/8/2022 [Post-DataHacks Revisit](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Reattempt.ipynb)
 A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets and retrain our model.
 
 Details can be found [here](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Reattempt.ipynb).
