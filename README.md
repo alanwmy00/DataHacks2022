@@ -4,7 +4,7 @@
 
 Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://github.com/alanwmy00), [Hongyi Yang](https://github.com/hoy007), [Jack Yang](https://github.com/immmjack)
 
-## 9/8/2022 [Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](Revisit%202.%20Bigram%20%26%20BERT.ipynb)
+## 9/8/2022 [Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](#Revisit%202.%20Bigram%20%26%20BERT.ipynb)
 Four months after the previous post-DataHacks revisit, we revisit again after having a more fundamental understanding of NLP (many thanks to the ***Deep Learning with Python*** book).
  
 From the book, we learned a simple heuristic for selecting a text-classification model: the ratio between the number of training samples and the mean number of words per sample:
@@ -35,7 +35,7 @@ So! Let's hope that we will come back another time with more decent knowledge in
 
 _____
 
-## 5/8/2022 [Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
+## 5/8/2022 [Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](#Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
 A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets.
 
 We apply Bidirectional RNN-LSTM: RNN-LSTM has memory of what it has seen before, most suitable for text processing. Bidirectional means the model reads the text from both ends, so it learns context of a word from both words coming ahead and after alike.
@@ -47,17 +47,17 @@ _____________________________
 
 # Original Code & Report
 
-[Cleaning & EDA](https://github.com/alanwmy00/DataHacks2022/blob/main/Cleaning%20and%20EDA.ipynb)
+[Cleaning & EDA](#Cleaning%20and%20EDA.ipynb)
 
-[Modelling 1](Modelling_1.ipynb)
+[Modelling 1](#Modelling_1.ipynb)
 
-[Modelling 2](Modelling_2.ipynb)
+[Modelling 2](#Modelling_2.ipynb)
 
-[Final Predictions](prediction_datahack.csv)
+[Final Predictions](#prediction_datahack.csv)
 
-[Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
+[Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](#Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
 
-[Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](Revisit%202.%20Bigram%20%26%20BERT.ipynb)
+[Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](#Revisit%202.%20Bigram%20%26%20BERT.ipynb)
 
 ## Introduction
 
