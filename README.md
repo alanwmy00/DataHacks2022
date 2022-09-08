@@ -16,15 +16,15 @@ The calculation for this dataset is around 280, but for learning and testing pur
 - A sequence model looks at both keywords and their relative position.
   - We choose to use transformers, a model that produces "context-aware" representation of text data with self-attention layers. We decided to utilize BERT (Bidirectional Encoder Representations from Transformers), a pre-trained model, for this problem.
  
-We are able to reach a 84.8% test accuracy with Bag of Bigrams and a 89.3% test accuracy with BERT. In general, per the heuristic rule, the set model (bag of bigrams) should perform better as the sequence model would require more training data, but in this dataset, the results are opposite.
+We are able to reach a **84.8%** test accuracy with Bag of Bigrams and a **89.3%** test accuracy with BERT. In general, per the heuristic rule, the set model (bag of bigrams) should perform better as the sequence model would require more training data, but in this dataset, the results are opposite.
  
 One thing that we could improve (hopefully we will be revisiting this dataset again when we learn more about NLP in the future) is that we retrained the entire BERT model on our dataset - 28 million trainable parameters so took forever. What we should do, instead, is to
 - a. set `trainable=False` for BERT, only train our added layers for our tri-nary classification purpose. Tried that! Result is terrible, even worse than the common sense benchmark 55% (where we just classify everything as `neutral`, as we have a quite unbalanced dataset)
 - b. fine-tuning the BERT model, set `trainable=True` for the last few layers of BERT. This should be the ideal way of using BERT (there is a reason why it is called a *pretrained* model), but... we haven't really figured out how to do it. Unlike pre-trained convnet, where the deeper layers would extract more abstract features so we can easily fine-tune for tailored usage, the internal logic of transformers remain too complex for us to understand; even on the TensorFlow official website, they retrained the entire BERT instead of fine-tuning it.
  
-Overall, everything we built after DataHacks easily reached 85%+ accuracy; would surely have won us champion if we knew this back in April 2022. But does accuracy really matter now? We think the answer is **no**.
+Overall, everything we built after DataHacks easily reached 85%+ accuracy; would surely have won the champion if we were this back in April 2022. But does accuracy really matter now? We think the answer is **NO!**
  
-- First, it's probably the limit of this dataset. 90% accuracy for 3-class classfication, pretty good! For some entries, we cannot even tell if the news is positive or negative or neutral; don't have too high an expectation for the machine then!
+- First, 90% is probably the limit of this dataset. 90% accuracy for 3-class classfication, pretty good! Also it is worth to note that for some entries, we cannot even tell if the news is positive or negative or neutral; so don't have too high an expectation for the machine then!
   > Ha! The worst part of data science comes from the data itself! ---Alan Wang
 - Second, this DataHacks is our (at least my) starting point of Deep Learning, or even machine learning. We have been learning so much afterwards, and whenever we encounter a new NLP problem, we always think of this dataset. It's been a really fun journey!
 
@@ -39,7 +39,7 @@ A month later, after learning more deep learning methods, especially RNN model, 
 We apply Bidirectional RNN-LSTM: RNN-LSTM has memory of what it has seen before, most suitable for text processing. Bidirectional means the model reads the text from both ends, so it learns context of a word from both words coming ahead and after alike.
 
 We are able to reach a **90%** accuracy on both validation set and test set (much higher than the 76% accuracy of the winners' team). 
-> I wish I could know this method earily :( --- Alan Wang
+> I wish I could know this method eariler :( --- Alan Wang
 _____________________________
 
 
