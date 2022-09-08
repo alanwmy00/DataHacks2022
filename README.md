@@ -1,6 +1,4 @@
-
-
-# DataHacks2022
+# UCSD DataHacks 2022: Sentiment Analysis on Financial Data 
 
 Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://github.com/alanwmy00), [Hongyi Yang](https://github.com/hoy007), [Jack Yang](https://github.com/immmjack)
 
@@ -21,7 +19,7 @@ We are able to reach a **84.8%** test accuracy with Bag of Bigrams and a **89.3%
 Another interesting thing we noticed, a higher `SparseCategoricalCrossentropy` loss does not necessarily mean a lower `accuracy`, if we compare the BERT model with the Bidirectional RNN-LSTM model from [Post-DataHacks Revisit 1](#582022-post-datahacks-revisit-1-bidirectional-rnn-lstm), as `SparseCategoricalCrossentropy` is would consider distance between pred and real values, but `accuracy` would only consider same or different.
 
 One thing that we could, and should, improve is that we retrained the entire BERT model on our dataset - 28 million trainable parameters so took forever. What we should do, instead, is to:
-- a. set `trainable=False` for BERT, only train our added layers for our tri-nary classification purpose. Tried that! Result is terrible, even worse than the common sense benchmark 55% (where we just classify everything as `neutral`, as we have a quite unbalanced dataset)
+- a. set `trainable=False` for BERT, only train our added layers for our tri-nary classification purpose. Tried that! Result is terrible, even worse than the common sense baseline 55% (where we just classify everything as `neutral`, as we have a quite unbalanced dataset)
 - b. fine-tune the BERT model, set `trainable=True` only for the last few layers of BERT. This should be the ideal way of using BERT (there is a reason why it is called a *pretrained* model), but... we haven't really figured out how to do it. Unlike pre-trained convnet, where the deeper layers would extract more abstract features so we can easily fine-tune for more tailored usage, the internal logic of transformers remain too complex for us to understand; even on the TensorFlow official website, they retrained the entire BERT instead of fine-tuning it.
  
 Overall, everything we built after DataHacks easily reached 85%+ accuracy; would surely have won the champion if we were this back in April 2022. But does accuracy really matter now? We think the answer is **NO!**
