@@ -4,23 +4,23 @@
 
 Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://github.com/alanwmy00), [Hongyi Yang](https://github.com/hoy007), [Jack Yang](https://github.com/immmjack)
 
-## 9/8/2022 [Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](#Revisit%202.%20Bigram%20%26%20BERT.ipynb)
+## 9/8/2022 [Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](https://github.com/alanwmy00/FinancialDataSentimentAnalysis/blob/main/Revisit%202.%20Bigram%20%26%20BERT.ipynb)
 Four months after the previous post-DataHacks revisit, we revisit again after having a more fundamental understanding of NLP (many thanks to the ***Deep Learning with Python*** book).
  
 From the book, we learned a simple heuristic for selecting a text-classification model: the ratio between the number of training samples and the mean number of words per sample:
 - <1500: Bag-of-bigrams
 - \>1500: Sequence models
  
-The calculation for this dataset is around 280, but for learning and testing purposes, we implement both.
+The calculation for this dataset is around `208`, but for learning and testing purposes, we implement both.
 - Bag of Bigrams is a *set* model: it looks at keywords only, but not order between words
 - A sequence model looks at both keywords and their relative position.
   - We choose to use transformers, a model that produces "context-aware" representation of text data with self-attention layers. We decided to utilize BERT (Bidirectional Encoder Representations from Transformers), a pre-trained model, for this problem.
  
 We are able to reach a **84.8%** test accuracy with Bag of Bigrams and a **89.3%** test accuracy with BERT. In general, per the heuristic rule, the set model (bag of bigrams) should perform better as the sequence model would require more training data, but in this dataset, the results are opposite. Many reasons, could come from the randomness in the data itself; could also be that we did not do hyper-parameter tuning - not the optimal result for the respective model.
 
-Another interesting thing we noticed, a higher `SparseCategoricalCrossentropy` loss does not necessarily mean a lower `accuracy`, if we compare the BERT model with the Bidirectional RNN-LSTM model from 
+Another interesting thing we noticed, a higher `SparseCategoricalCrossentropy` loss does not necessarily mean a lower `accuracy`, if we compare the BERT model with the Bidirectional RNN-LSTM model from [Post-DataHacks Revisit 1](#582022-post-datahacks-revisit-1-bidirectional-rnn-lstm), as `SparseCategoricalCrossentropy` is would consider distance between pred and real values, but `accuracy` would only consider same or different.
 
-One thing that we could improve (hopefully we will be revisiting this dataset again when we learn more about NLP in the future) is that we retrained the entire BERT model on our dataset - 28 million trainable parameters so took forever. What we should do, instead, is to
+One thing that we could, and should, improve is that we retrained the entire BERT model on our dataset - 28 million trainable parameters so took forever. What we should do, instead, is to:
 - a. set `trainable=False` for BERT, only train our added layers for our tri-nary classification purpose. Tried that! Result is terrible, even worse than the common sense benchmark 55% (where we just classify everything as `neutral`, as we have a quite unbalanced dataset)
 - b. fine-tune the BERT model, set `trainable=True` only for the last few layers of BERT. This should be the ideal way of using BERT (there is a reason why it is called a *pretrained* model), but... we haven't really figured out how to do it. Unlike pre-trained convnet, where the deeper layers would extract more abstract features so we can easily fine-tune for more tailored usage, the internal logic of transformers remain too complex for us to understand; even on the TensorFlow official website, they retrained the entire BERT instead of fine-tuning it.
  
@@ -35,7 +35,7 @@ So! Let's hope that we will come back another time with more decent knowledge in
 
 _____
 
-## 5/8/2022 [Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](#Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
+## 5/8/2022 [Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](https://github.com/alanwmy00/FinancialDataSentimentAnalysis/blob/main/Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
 A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets.
 
 We apply Bidirectional RNN-LSTM: RNN-LSTM has memory of what it has seen before, most suitable for text processing. Bidirectional means the model reads the text from both ends, so it learns context of a word from both words coming ahead and after alike.
@@ -47,17 +47,17 @@ _____________________________
 
 # Original Code & Report
 
-[Cleaning & EDA](#Cleaning%20and%20EDA.ipynb)
+[Cleaning & EDA](https://github.com/alanwmy00/DataHacks2022/blob/main/Cleaning%20and%20EDA.ipynb)
 
-[Modelling 1](#Modelling_1.ipynb)
+[Modelling 1](https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_1.ipynb)
 
-[Modelling 2](#Modelling_2.ipynb)
+[Modelling 2](https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_2.ipynb)
 
-[Final Predictions](#prediction_datahack.csv)
+[Final Predictions](https://github.com/alanwmy00/DataHacks2022/blob/main/prediction_datahack.csv)
 
-[Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](#Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
+[Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](https://github.com/alanwmy00/FinancialDataSentimentAnalysis/blob/main/Revisit%201.%20Bidirectional%20RNN-LSTM.ipynb)
 
-[Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](#Revisit%202.%20Bigram%20%26%20BERT.ipynb)
+[Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](https://github.com/alanwmy00/FinancialDataSentimentAnalysis/blob/main/Revisit%202.%20Bigram%20%26%20BERT.ipynb)
 
 ## Introduction
 
