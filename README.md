@@ -1,19 +1,49 @@
-## 5/8/2022 [Post-DataHacks Revisit](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Revisit.ipynb)
-A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets and retrain our model.
 
-Details can be found [here](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Revisit.ipynb).
-
-In short, we trained a RNN model by stacking two LSTM layers and reached an astonishing **90%** accuracy on both validation set and test set (much higher than the 76% accuracy of the winners' team). 
-
-Unfortunately, since DataHacks is already over, we are unable to get a true accuracy on the test dataset provided, but it should be around 0.9 based on validation set and test set extracted from advanced_trainset.csv.
-
-> I wish I could know this method earily :(     --- Alan Wang
 
 # DataHacks2022
 
 Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://github.com/alanwmy00), [Hongyi Yang](https://github.com/hoy007), [Jack Yang](https://github.com/immmjack)
 
-## Code
+## 9/8/2022 [Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](https://github.com/alanwmy00/FinancialDataSentimentAnalysis/blob/main/BiGram%20%26%20BERT.ipynb)
+Four months after the previous post-DataHacks revisit, we revisit again after having a more fundamental understanding of NLP (many thanks to the ***Deep Learning with Python*** book).
+ 
+From the book, we learned a simple heuristic for selecting a text-classification model: the ratio between the number of training samples and the mean number of words per sample:
+- <1500: Bag-of-bigrams
+- \>1500: Sequence models
+ 
+The calculation for this dataset is around 280, but for learning and testing purposes, we implement both.
+- Bag of Bigrams is a *set* model: it looks at keywords only, but not order between words
+- A sequence model looks at both keywords and their relative position.
+  - We choose to use transformers, a model that produces "context-aware" representation of text data with self-attention layers. We decided to utilize BERT (Bidirectional Encoder Representations from Transformers), a pre-trained model, for this problem.
+ 
+We are able to reach a 84.8% test accuracy with Bag of Bigrams and a 89.3% test accuracy with BERT. In general, per the heuristic rule, the set model (bag of bigrams) should perform better as the sequence model would require more training data, but in this dataset, the results are opposite.
+ 
+One thing that we could improve (hopefully we will be revisiting this dataset again when we learn more about NLP in the future) is that we retrained the entire BERT model on our dataset - 28 million trainable parameters so took forever. What we should do, instead, is to
+- a. set `trainable=False` for BERT, only train our added layers for our tri-nary classification purpose. Tried that! Result is terrible, even worse than the common sense benchmark 55% (where we just classify everything as `neutral`, as we have a quite unbalanced dataset)
+- b. fine-tuning the BERT model, set `trainable=True` for the last few layers of BERT. This should be the ideal way of using BERT (there is a reason why it is called a *pretrained* model), but... we haven't really figured out how to do it. Unlike pre-trained convnet, where the deeper layers would extract more abstract features so we can easily fine-tune for tailored usage, the internal logic of transformers remain too complex for us to understand; even on the TensorFlow official website, they retrained the entire BERT instead of fine-tuning it.
+ 
+Overall, everything we built after DataHacks easily reached 85%+ accuracy; would surely have won us champion if we knew this back in April 2022. But does accuracy really matter now? We think the answer is **no**.
+ 
+- First, it's probably the limit of this dataset. 90% accuracy for 3-class classfication, pretty good! For some entries, we cannot even tell if the news is positive or negative or neutral; don't have too high an expectation for the machine then!
+  > Ha! The worst part of data science comes from the data itself! ---Alan Wang
+- Second, this DataHacks is our (at least my) starting point of Deep Learning, or even machine learning. We have been learning so much afterwards, and whenever we encounter a new NLP problem, we always think of this dataset. It's been a really fun journey!
+
+So! Let's hope that we will come back another time with more decent knowledge in Transformers in the future. Cool stuff!
+
+
+
+
+## 5/8/2022 [Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Revisit.ipynb)
+A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets.
+
+We apply Bidirectional RNN-LSTM: RNN-LSTM has memory of what it has seen before, most suitable for text processing. Bidirectional means the model reads the text from both ends, so it learns context of a word from both words coming ahead and after alike.
+
+We are able to reach a **90%** accuracy on both validation set and test set (much higher than the 76% accuracy of the winners' team). 
+> I wish I could know this method earily :( --- Alan Wang
+_____________________________
+
+
+# Original Code & Report
 
 [Cleaning & EDA](https://github.com/alanwmy00/DataHacks2022/blob/main/Cleaning%20and%20EDA.ipynb)
 
@@ -22,6 +52,10 @@ Team Members: [Huaning Liu](https://github.com/Stevela-hn), [Alan Wang](https://
 [Modelling 2](https://github.com/alanwmy00/DataHacks2022/blob/main/Modelling_2.ipynb)
 
 [Final Predictions](https://github.com/alanwmy00/DataHacks2022/blob/main/prediction_datahack.csv)
+
+[Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Revisit.ipynb)
+
+[Post-DataHacks Revisit 2: Bag-of-Bigrams and BERT](https://github.com/alanwmy00/FinancialDataSentimentAnalysis/blob/main/BiGram%20%26%20BERT.ipynb)
 
 ## Introduction
 
