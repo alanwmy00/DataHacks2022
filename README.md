@@ -31,7 +31,7 @@ Overall, everything we built after DataHacks easily reached 85%+ accuracy; would
 So! Let's hope that we will come back another time with more decent knowledge in Transformers in the future. Cool stuff!
 
 
-
+_____
 
 ## 5/8/2022 [Post-DataHacks Revisit 1: Bidirectional RNN-LSTM](https://github.com/alanwmy00/DataHacks2022/blob/main/Post%20DataHacks%20Revisit.ipynb)
 A month later, after learning more deep learning methods, especially RNN model, we decide to revisit our DataHacks datasets.
