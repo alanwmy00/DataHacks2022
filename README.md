@@ -21,7 +21,9 @@ Another interesting thing we noticed, a higher `SparseCategoricalCrossentropy` l
 One thing that we could, and should, improve is that we retrained the entire BERT model on our dataset - 28 million trainable parameters so took forever. What we should do, instead, is to:
 - a. set `trainable=False` for BERT, only train our added layers for our tri-nary classification purpose. Tried that! Result is terrible, even worse than the common sense baseline 55% (where we just classify everything as `neutral`, as we have a quite unbalanced dataset)
 - b. fine-tune the BERT model, set `trainable=True` only for the last few layers of BERT. This should be the ideal way of using BERT (there is a reason why it is called a *pretrained* model), but... we haven't really figured out how to do it. Unlike pre-trained convnet, where the deeper layers would extract more abstract features so we can easily fine-tune for more tailored usage, the internal logic of transformers remain too complex for us to understand; even on the TensorFlow official website, they retrained the entire BERT instead of fine-tuning it.
- 
+
+> (But later we realized that [Google](https://tfhub.dev/tensorflow/bert_en_uncased_L-12_H-768_A-12/2) says "All parameters in the module are trainable, and fine-tuning all parameters is the recommended practice").
+
 Overall, everything we built after DataHacks easily reached 85%+ accuracy; would surely have won the champion if we were this back in April 2022. But does accuracy really matter now? We think the answer is **NO!**
  
 - First, 90% is probably the limit of this dataset. 90% accuracy for 3-class classfication, pretty good! Also it is worth to note that for some entries, we cannot even tell if the news is positive or negative or neutral; so don't have too high an expectation for the machine then!
